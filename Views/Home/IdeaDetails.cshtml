@@ -25,7 +25,7 @@
     @foreach(var user in Model.LikedBy)
     {
         <tr>
-            <td>@user.AssociatedUser.Alias</td>
+            <td><a href="/users/@user.UserId">@user.AssociatedUser.Alias</a></td>
             <td>@user.AssociatedUser.Name</td>
         </tr>
     }

@@ -24,7 +24,7 @@
     <br>
     <div class="row">
         <div class="col-4">
-            <p>@i.Author.Name says</p>
+            <p><a href="/users/@i.Author.UserId">@i.Author.Name</a> says</p>
         </div>
         <div class="col-8">
             <div class="border border-dark">
@@ -40,7 +40,7 @@
             
                 if(@i.LikedBy.Any(u=>u.UserId == Model.CurrentUser.UserId))
                 {
-                    <p>Already Liked <span class="ml-5">@i.LikedBy.Count people like this</span></p>
+                    <p>Already Liked <span class="ml-5"><a href="/bright_ideas/@i.IdeaId">@i.LikedBy.Count people</a> like this</span></p>
                 }
                 else {
                     <a href="like/@i.IdeaId">Like </a><span>@i.LikedBy.Count people like this</span>
