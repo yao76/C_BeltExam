@@ -1,0 +1,12 @@
+@model User
+<div class="header d-flex justify-content-end">
+    <a class="mr-5"href="/bright_ideas">Bright Ideas</a>
+    <a href="/logout">Logout</a></a>
+</div>
+<hr>
+<p>Name: @Model.Name</p>
+<p>Alias: @Model.Alias</p>
+<p>Email: @Model.Email</p>
+<hr>
+<p>Total Number of Posts: @Model.UserIdeas.Count</p>
+<p>Total Number of Likes: @Model.UserLikes.Count</p>

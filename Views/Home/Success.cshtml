@@ -1,0 +1,52 @@
+@model DashboardViewModel
+<div class="header d-flex justify-content-between">
+    Hi @Model.CurrentUser.Alias
+    <div class="links">
+        <a href="/logout">Logout</a></a>
+    </div>
+</div>
+<hr>
+
+<form asp-action="ProcessNewIdea" asp-controller="Home" method="post">
+    <div class="form-group row">
+        <label asp-for="@Model.NewIdea.Content"></label>
+        
+        <div class="col-8">
+            <input class="form-control" asp-for="@Model.NewIdea.Content">
+        </div>
+        <button class="btn btn-primary"type="submit">Add Idea!</button>
+    </div>
+    <span class="text-danger"asp-validation-for="@Model.NewIdea.Content"></span>
+</form>
+
+@foreach(var i in Model.AllIdeas)
+{
+    <br>
+    <div class="row">
+        <div class="col-4">
+            <p>@i.Author.Name says</p>
+        </div>
+        <div class="col-8">
+            <div class="border border-dark">
+
+                <p>@i.Content</p>
+            </div>
+            
+            @if(i.UserId == Model.CurrentUser.UserId)
+            {
+                <a href="delete/@i.IdeaId">Delete</a>
+            }
+            else {
+            
+                if(@i.LikedBy.Any(u=>u.UserId == Model.CurrentUser.UserId))
+                {
+                    <p>Already Liked <span class="ml-5">@i.LikedBy.Count people like this</span></p>
+                }
+                else {
+                    <a href="like/@i.IdeaId">Like </a><span>@i.LikedBy.Count people like this</span>
+                }
+                
+            }
+        </div>
+    </div>
+}

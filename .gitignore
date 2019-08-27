@@ -1,0 +1,6 @@
+*.zip
+*.vscode
+*appsettings.json
+*Migrations/
+Auctions.png
+bright_ideas(1).png

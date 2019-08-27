@@ -1,0 +1,33 @@
+@model Idea
+<div class="header d-flex justify-content-end">
+    <a class="mr-5"href="/bright_ideas">Bright Ideas</a>
+    <a href="/logout">Logout</a></a>
+</div>
+<hr>
+<div class="row">
+    <div class="col-4">
+        @Model.Author.Name says
+    </div>
+    <div class="col-8 border border-dark">
+        @Model.Content
+    </div>
+</div>
+<h3>People who liked this post:</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Alias</th>
+            <th scope="col">Name</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach(var user in Model.LikedBy)
+    {
+        <tr>
+            <td>@user.AssociatedUser.Alias</td>
+            <td>@user.AssociatedUser.Name</td>
+        </tr>
+    }
+    </tbody>
+</table>
